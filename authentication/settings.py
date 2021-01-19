@@ -80,11 +80,8 @@ WSGI_APPLICATION = 'authentication.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'authentication',
-        'USER': 'collinsbett29',
-        'PASSWORD':'##@@collins1',
-
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
