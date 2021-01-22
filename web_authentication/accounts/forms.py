@@ -1,13 +1,21 @@
-from django.contrib.auth import get_user_model
+from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 
-class UserAdminCreationForm(UserCreationForm):
-    """
-    A Custom form for creating new users.
-    """
+
+class RegisterForm(UserCreationForm):
+    email = forms.EmailField()
+    phone_number = forms.CharField(max_length=12)
+    profile_pic = forms.ImageField() 
+    ROLE_CHOICES =(
+        ("1", "Admin"),
+        ("2", "User"),
+        )
+    role = forms.ChoiceField(choices= ROLE_CHOICES)
+
+
 
     class Meta:
-        model = get_user_model()
-        fields = ['email']
-        
+        model = User
+        fields = ["username", "email", "profile_pic", "phone_number", "password1", "password2", "role"]
