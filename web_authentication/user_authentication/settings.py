@@ -29,10 +29,16 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+
 # Application definition
 
+CRISPY_TEMPLATE_PACK="bootstrap4"
+
+
 INSTALLED_APPS = [
-    'accounts',
+    "accounts",
+    "crispy_forms",
+    "phone_field",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -53,13 +59,13 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'user_authentication.urls'
 
-AUTH_USER_MODEL = 'accounts.CustomUser'
-
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [str(BASE_DIR.joinpath('templates'))],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
